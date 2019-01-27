@@ -324,9 +324,9 @@ public class PlayerMovement : MonoBehaviour
             wishJump = false;
         }
 
-        if (playerVelocity.y == jumpSpeed)
+        if (playerVelocity.y >= jumpSpeed)
         {
-            //jump sound
+            FindObjectOfType<AudioManager>().Play("Jump");
         }
     }
 
