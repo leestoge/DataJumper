@@ -10,11 +10,12 @@ public class PickUp : MonoBehaviour
     public GameObject item;
     public GameObject tempParent;
     public bool isHolding = false;
+    private bool toggle;
 
     void Update()
     {
         distance = Vector3.Distance(item.transform.position, tempParent.transform.position);
-        if (distance >= 3f)
+        if (distance >= 4f)
         {
             isHolding = false;
         }
@@ -25,8 +26,9 @@ public class PickUp : MonoBehaviour
             item.GetComponent<Rigidbody>().velocity = Vector3.zero;
             item.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             item.transform.SetParent(tempParent.transform);
+            // item.transform.position = tempParent.transform.position;
 
-            if (Input.GetMouseButton(1))
+            if (!toggle)
             {
                 item.GetComponent<Rigidbody>().AddForce(tempParent.transform.forward * throwForce);
                 isHolding = false;
@@ -43,14 +45,28 @@ public class PickUp : MonoBehaviour
 
     void OnMouseOver()
     {
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    if (distance <= 3f)
+        //    {
+        //        isHolding = true;
+        //        item.GetComponent<Rigidbody>().useGravity = false;
+        //        item.GetComponent<Rigidbody>().detectCollisions = true;
+        //    }
+        //}
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (distance <= 3f)
+            if (distance <= 4f)
             {
-                isHolding = true;
-                item.GetComponent<Rigidbody>().useGravity = false;
-                item.GetComponent<Rigidbody>().detectCollisions = true;
+                toggle = !toggle;
             }
+        }
+        if (toggle)
+        {
+            isHolding = true;
+            item.GetComponent<Rigidbody>().useGravity = false;
+            item.GetComponent<Rigidbody>().detectCollisions = true;
         }
     }
 
