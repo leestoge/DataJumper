@@ -26,7 +26,6 @@ public class PickUp : MonoBehaviour
             item.GetComponent<Rigidbody>().velocity = Vector3.zero;
             item.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             item.transform.SetParent(tempParent.transform);
-            // item.transform.position = tempParent.transform.position;
 
             if (!toggle)
             {
@@ -45,16 +44,6 @@ public class PickUp : MonoBehaviour
 
     void OnMouseOver()
     {
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    if (distance <= 3f)
-        //    {
-        //        isHolding = true;
-        //        item.GetComponent<Rigidbody>().useGravity = false;
-        //        item.GetComponent<Rigidbody>().detectCollisions = true;
-        //    }
-        //}
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (distance <= 4f)
@@ -73,5 +62,6 @@ public class PickUp : MonoBehaviour
     void OnMouseExit()
     {
         isHolding = false;
+        toggle = false;
     }
 }
