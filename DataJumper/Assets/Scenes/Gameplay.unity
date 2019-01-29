@@ -11010,7 +11010,7 @@ MonoBehaviour:
   item: {fileID: 48333973}
   replica: {fileID: 3947764466077140690, guid: 651771b2a78dcae459f1861b0d3a2220, type: 3}
   hologram: {fileID: 496198383}
-  fuckme: {fileID: 2100000, guid: e7d4e6f53fea1764e8a2676c78a9168b, type: 2}
+  activeMaterial: {fileID: 2100000, guid: e7d4e6f53fea1764e8a2676c78a9168b, type: 2}
 --- !u!65 &1787151203
 BoxCollider:
   m_ObjectHideFlags: 0
