@@ -14,6 +14,6 @@ public class PayloadDelivery : MonoBehaviour
         // slow mo?
         timeManager.InitiateSlowMotion();
 
-        Debug.Log("You win.");
+        Debug.Log("You win.");  // Replace with UI element?
     }
 }
