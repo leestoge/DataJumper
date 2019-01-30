@@ -68,7 +68,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_Time: 5
   m_Parameters:
     serializedVersion: 3
@@ -159,7 +159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938281823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 1}
+  m_LocalPosition: {x: 0.5, y: -1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5748455103565259044}
@@ -33174,6 +33174,7 @@ GameObject:
   - component: {fileID: 5748455103213463592}
   - component: {fileID: 5748455103213463591}
   - component: {fileID: 5748455103213463590}
+  - component: {fileID: 83949372}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -33327,6 +33328,19 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   fpsDisplayRate: 4
+--- !u!114 &83949372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5748455103213463589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee06495b065fa742892816adeff1937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trailHolder: {fileID: 1650682118}
 --- !u!1 &5748455103565259043
 GameObject:
   m_ObjectHideFlags: 0
