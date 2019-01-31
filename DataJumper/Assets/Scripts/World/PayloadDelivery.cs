@@ -11,7 +11,7 @@ public class PayloadDelivery : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+        FindObjectOfType<AudioManager>().SwitchMusic("Level02");
     }
     void OnTriggerEnter(Collider other)
     {
