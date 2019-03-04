@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,11 +6,5 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 146;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
