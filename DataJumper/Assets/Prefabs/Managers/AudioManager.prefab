@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: 01Music
-    clip: {fileID: 8300000, guid: 885311d234a0b214fa8bc1e16ff85c37, type: 3}
+    clip: {fileID: 8300000, guid: 78bb9a7b7669e4c4ea2cba257abc03a0, type: 3}
     volume: 0.2
     pitch: 1
     loop: 1
@@ -61,4 +61,34 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: Respawn
+    clip: {fileID: 8300000, guid: 2b67176d91d0842488dd2e0bef6c58c0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RocketFire
+    clip: {fileID: 8300000, guid: a39fdf325cb68bb47ae7b412d7c563f1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RocketHit
+    clip: {fileID: 8300000, guid: b3eaab4074167d44cbc5077cea4198c8, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RocketHitPlayer
+    clip: {fileID: 8300000, guid: 419d167874b661a4dac769ac0b0ff392, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 03Music
+    clip: {fileID: 8300000, guid: 78bb9a7b7669e4c4ea2cba257abc03a0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
