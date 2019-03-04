@@ -34,20 +34,26 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        SwitchMusic("Level01");
+        SwitchMusic("Level00"); // like an array, 0,1,2 etc
     }
 
     public void SwitchMusic(string targetLevel)
     {
-        if (targetLevel == "Level01")
+        if (targetLevel == "Level00")
         {
             Play("01Music");
+        }
+        else if (targetLevel == "Level01")
+        {
+            Stop("01Music");
+            Play("02Music");
         }
         else if (targetLevel == "Level02")
         {
             Stop("01Music");
-            Play("02Music");
-        } 
+            Stop("02Music");
+            Play("03Music");
+        }
     }
 
     public void Play(string name)
@@ -72,5 +78,16 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.Stop();
+    }
+
+    public void RandomizePitch(string name)
+    {
+        var s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + "not found!");
+            return;
+        }
+        s.source.pitch = (UnityEngine.Random.Range(0.95f, 1.05f));
     }
 }
