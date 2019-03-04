@@ -13,12 +13,13 @@ public class OutOfBounds : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // sound clip?
+            FindObjectOfType<AudioManager>().Play("Respawn");
             respawnParticle.Play();
             player.transform.position = respawnPoint.transform.position;
         }
         else if (other.CompareTag("FriendCube"))
         {
+            // a different sound clip?
             cuberespawnParticle.Play();
             cube.transform.position = cubeRedeploy.transform.position;
         }
