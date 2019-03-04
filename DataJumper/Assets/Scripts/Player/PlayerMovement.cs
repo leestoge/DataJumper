@@ -326,6 +326,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerVelocity.y >= jumpSpeed)
         {
+            FindObjectOfType<AudioManager>().RandomizePitch("Jump");
             FindObjectOfType<AudioManager>().Play("Jump");
         }
     }
