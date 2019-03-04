@@ -6,12 +6,11 @@ public class PayloadDelivery : MonoBehaviour
 {
     public ParticleSystem winnerParticle;
     public TimeManager timeManager;
-
     private IEnumerator WaitForSceneLoad()
     {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        FindObjectOfType<AudioManager>().SwitchMusic("Level02");
+        FindObjectOfType<AudioManager>().SwitchMusic("Level" + SceneManager.GetActiveScene().buildIndex + 1);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -21,7 +20,6 @@ public class PayloadDelivery : MonoBehaviour
 
         // slow mo?
         timeManager.InitiateSlowMotion();
-
         Debug.Log("You win.");  // Replace with UI element?
 
         StartCoroutine(WaitForSceneLoad());
