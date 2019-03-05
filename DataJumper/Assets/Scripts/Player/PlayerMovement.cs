@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 // Contains the command the user wishes upon the character
 struct Cmd
@@ -50,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     private float rotY;
 
     private Vector3 moveDirectionNorm = Vector3.zero;
-    private Vector3 playerVelocity = Vector3.zero;
+    public Vector3 playerVelocity = Vector3.zero;
     private float playerTopVelocity;
 
     // Q3: players can queue the next jump just before he hits the ground
@@ -134,6 +133,13 @@ public class PlayerMovement : MonoBehaviour
         else if (!_controller.isGrounded)
         {
             AirMove();
+        }
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            // slide
+            StartSliding();
+            Invoke("StopSliding", 1.0f);
         }
 
         // Move the controller
@@ -329,6 +335,19 @@ public class PlayerMovement : MonoBehaviour
             FindObjectOfType<AudioManager>().RandomizePitch("Jump");
             FindObjectOfType<AudioManager>().Play("Jump");
         }
+    }
+
+
+    private void StartSliding()
+    {
+        _controller.height /= 2;
+        _controller.center = new Vector3(_controller.center.x, _controller.center.y / 2, _controller.center.z);
+    }
+
+    private void StopSliding()
+    {
+        _controller.height *= 2;
+        _controller.center = new Vector3(_controller.center.x, _controller.center.y * 2, _controller.center.z);
     }
 
     /**
