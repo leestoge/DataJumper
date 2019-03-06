@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 // Contains the command the user wishes upon the character
 struct Cmd
@@ -135,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
             AirMove();
         }
 
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             // slide
             StartSliding();
@@ -332,20 +333,23 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerVelocity.y >= jumpSpeed)
         {
-            FindObjectOfType<AudioManager>().RandomizePitch("Jump");
-            FindObjectOfType<AudioManager>().Play("Jump");
+            FindObjectOfType<AudioManager>().RandomizePitch("wallJump");
+            FindObjectOfType<AudioManager>().Play("wallJump");
         }
     }
 
 
     private void StartSliding()
     {
+        FindObjectOfType<AudioManager>().Play("Slide");
+        moveSpeed *= 2;
         _controller.height /= 2;
         _controller.center = new Vector3(_controller.center.x, _controller.center.y / 2, _controller.center.z);
     }
 
     private void StopSliding()
     {
+        moveSpeed /= 2;
         _controller.height *= 2;
         _controller.center = new Vector3(_controller.center.x, _controller.center.y * 2, _controller.center.z);
     }
