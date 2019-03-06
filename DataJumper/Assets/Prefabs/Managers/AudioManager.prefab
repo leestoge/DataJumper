@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5951341783061557429}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: AudioManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,31 +63,37 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: Respawn
-    clip: {fileID: 8300000, guid: 2b67176d91d0842488dd2e0bef6c58c0, type: 3}
+    clip: {fileID: 8300000, guid: 8722e5811d5ea244c94b7fd13db1aab8, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: RocketFire
-    clip: {fileID: 8300000, guid: a39fdf325cb68bb47ae7b412d7c563f1, type: 3}
+    clip: {fileID: 8300000, guid: ae954427be7e8644db7f32fa2e202381, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: RocketHit
-    clip: {fileID: 8300000, guid: b3eaab4074167d44cbc5077cea4198c8, type: 3}
+    clip: {fileID: 8300000, guid: e06164d4dedb5fc4d9197601d984f744, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: RocketHitPlayer
-    clip: {fileID: 8300000, guid: 419d167874b661a4dac769ac0b0ff392, type: 3}
+    clip: {fileID: 8300000, guid: 195dd19d5644c0a41a9ba7ff7749fbdb, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 03Music
-    clip: {fileID: 8300000, guid: 78bb9a7b7669e4c4ea2cba257abc03a0, type: 3}
+  - name: Slide
+    clip: {fileID: 8300000, guid: bbbc17b26df929e4cb2392584fc89a5c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: wallJump
+    clip: {fileID: 8300000, guid: 1e0f8bb9edf1a634e8cf61094ec472fa, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
