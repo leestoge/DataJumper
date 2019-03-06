@@ -8,7 +8,7 @@ public class FireRocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0))
         {
             FindObjectOfType<AudioManager>().Play("RocketFire");
             Quaternion rocketRot = Quaternion.Euler(shootPoint.rotation.eulerAngles.x + 90, shootPoint.rotation.eulerAngles.y, shootPoint.rotation.eulerAngles.z);
