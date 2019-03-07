@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 // Contains the command the user wishes upon the character
 struct Cmd
@@ -26,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public float runAcceleration = 14.0f;         // Ground accel
     public float runDeacceleration = 10.0f;       // Deacceleration that occurs when running on the ground
     public float airAcceleration = 2.0f;          // Air accel
-    public float airDecceleration = 2.0f;         // Deacceleration experienced when ooposite strafing
+    public float airDecceleration = 2.0f;         // Deacceleration experienced when opposite strafing
     public float airControl = 0.3f;               // How precise air control is
     public float sideStrafeAcceleration = 50.0f;  // How fast acceleration occurs to get up to sideStrafeSpeed when
     public float sideStrafeSpeed = 1.0f;          // What the max speed to generate when side strafing
@@ -61,6 +60,10 @@ public class PlayerMovement : MonoBehaviour
 
     // Player commands, stores wish commands that the player asks for (Forward, back, jump, etc)
     private Cmd _cmd;
+
+    // Sliding Particles
+    public ParticleSystem slideSparks1;
+    public ParticleSystem slideSparks2;
 
     private void Start()
     {
@@ -136,11 +139,11 @@ public class PlayerMovement : MonoBehaviour
             AirMove();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && _controller.isGrounded)
         {
             // slide
             StartSliding();
-            Invoke("StopSliding", 1.0f);
+            Invoke("StopSliding", 2.0f);
         }
 
         // Move the controller
@@ -341,10 +344,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void StartSliding()
     {
-        FindObjectOfType<AudioManager>().Play("Slide");
         moveSpeed *= 2;
         _controller.height /= 2;
         _controller.center = new Vector3(_controller.center.x, _controller.center.y / 2, _controller.center.z);
+        FindObjectOfType<AudioManager>().Play("Slide");
+        slideSparks1.Play();
+        slideSparks2.Play();
     }
 
     private void StopSliding()
@@ -352,6 +357,8 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed /= 2;
         _controller.height *= 2;
         _controller.center = new Vector3(_controller.center.x, _controller.center.y * 2, _controller.center.z);
+        slideSparks1.Stop();
+        slideSparks2.Stop();
     }
 
     /**
