@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
             AirMove();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && _controller.isGrounded)
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             // slide
             StartSliding();
@@ -348,8 +348,12 @@ public class PlayerMovement : MonoBehaviour
         _controller.height /= 2;
         _controller.center = new Vector3(_controller.center.x, _controller.center.y / 2, _controller.center.z);
         FindObjectOfType<AudioManager>().Play("Slide");
-        slideSparks1.Play();
-        slideSparks2.Play();
+
+        if (_controller.isGrounded)
+        {
+            slideSparks1.Play();
+            slideSparks2.Play();
+        }
     }
 
     private void StopSliding()
@@ -357,8 +361,14 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed /= 2;
         _controller.height *= 2;
         _controller.center = new Vector3(_controller.center.x, _controller.center.y * 2, _controller.center.z);
-        slideSparks1.Stop();
-        slideSparks2.Stop();
+        if (slideSparks1.isPlaying)
+        {
+            slideSparks1.Stop();
+        }
+        if (slideSparks2.isPlaying)
+        {
+            slideSparks2.Stop();
+        }
     }
 
     /**
@@ -432,5 +442,13 @@ public class PlayerMovement : MonoBehaviour
         ups.y = 0;
         GUI.Label(new Rect(0, 15, 400, 100), "Speed: " + Mathf.Round(ups.magnitude * 100) / 100 + "ups", style);
         GUI.Label(new Rect(0, 30, 400, 100), "Top Speed: " + Mathf.Round(playerTopVelocity * 100) / 100 + "ups", style);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (!_controller.isGrounded)
+        {
+            Debug.DrawRay(hit.point, hit.normal, Color.magenta, 1.25f);         
+        }
     }
 }
