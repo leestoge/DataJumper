@@ -3,7 +3,14 @@
 public class ToggleTrail : MonoBehaviour
 {
     public GameObject trailHolder; // empty game object holding trail
+    private TrailRenderer theTrail;
     private bool toggle;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        theTrail = trailHolder.GetComponent<TrailRenderer>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -14,11 +21,17 @@ public class ToggleTrail : MonoBehaviour
         }
         if (toggle)
         {
-            trailHolder.SetActive(false);
+            theTrail.enabled = false;
+            theTrail.Clear();
         }
         else
         {
-            trailHolder.SetActive(true);
+            theTrail.enabled = true;
         }
+    }
+
+    public void ClearTrail()
+    {
+        theTrail.Clear();
     }
 }
