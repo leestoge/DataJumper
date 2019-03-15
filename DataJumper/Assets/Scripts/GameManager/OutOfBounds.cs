@@ -29,9 +29,11 @@ public class OutOfBounds : MonoBehaviour
         }
         else if (other.CompareTag("FriendCube"))
         {
-            // a different sound clip?
+            FindObjectOfType<AudioManager>().RandomizePitch("Respawn");
+            FindObjectOfType<AudioManager>().Play("Respawn");
             cuberespawnParticle.Play();
             cube.transform.position = cubeRedeploy.transform.position;
+            cube.transform.rotation = cubeRedeploy.transform.rotation;
         }
     }
 
@@ -46,18 +48,19 @@ public class OutOfBounds : MonoBehaviour
     public IEnumerator RespawnCoroutine()
     {
         isRespawning = true;
-        player.gameObject.SetActive(false);
+        // player.gameObject.SetActive(false);
         // instantiate gore particle at player last position?
 
         yield return new WaitForSeconds(respawnLength);
 
         isRespawning = false;
 
-        player.gameObject.SetActive(true);
-        trailToggler.ClearTrail(); // reset player trail
+        // player.gameObject.SetActive(true);    
         movementRef.playerVelocity = Vector3.zero; // cancel out all speed the player has gained
-        player.transform.position = respawnPoint; // respawn them where they started     
+        player.transform.position = respawnPoint; // respawn them where they started
+        FindObjectOfType<AudioManager>().RandomizePitch("Respawn");
         FindObjectOfType<AudioManager>().Play("Respawn"); // play respawn noise
         respawnParticle.Play(); // play respawn particle
+        trailToggler.ClearTrail(); // reset player trail
     }
 }
