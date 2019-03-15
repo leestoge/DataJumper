@@ -27,7 +27,8 @@ public class ExplosionForce : MonoBehaviour
             else if (col.transform.tag == "Player")
             {
                 rigidbodies.Add(col.GetComponent<Rigidbody>());
-                FindObjectOfType<AudioManager>().Stop("RocketHit");
+                
+                FindObjectOfType<Rocket>().GetComponent<AudioSource>().Stop();
                 FindObjectOfType<AudioManager>().Play("RocketHitPlayer");
             }
         }

@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>());
 
-        Invoke("Explode", 5);
+        Invoke("Explode", 3);
     }
 
     void Explode()
@@ -22,9 +22,9 @@ public class Rocket : MonoBehaviour
         GetComponent<Collider>().enabled = false;
 
         GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
-        FindObjectOfType<AudioManager>().Play("RocketHit");
-        Destroy(explosion, 3f);
-        Destroy(gameObject, 3f);
+        GetComponent<AudioSource>().Play();
+        Destroy(explosion, 1f);
+        Destroy(gameObject, 1f);
     }
 
     void OnCollisionEnter(Collision other)
