@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: 01Music
-    clip: {fileID: 8300000, guid: 78bb9a7b7669e4c4ea2cba257abc03a0, type: 3}
-    volume: 0.2
+    clip: {fileID: 8300000, guid: 885311d234a0b214fa8bc1e16ff85c37, type: 3}
+    volume: 0.3
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -87,13 +87,25 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Slide
-    clip: {fileID: 8300000, guid: bbbc17b26df929e4cb2392584fc89a5c, type: 3}
+    clip: {fileID: 8300000, guid: 154b8cfb4b147aa4892a073ad6e98d8b, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: wallJump
     clip: {fileID: 8300000, guid: 1e0f8bb9edf1a634e8cf61094ec472fa, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Land
+    clip: {fileID: 8300000, guid: f80b0442158a73f4b9b3ce2193f3ab23, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CubeSpawn
+    clip: {fileID: 8300000, guid: 9089503e3a2b82b4381d87c7b97b608a, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
