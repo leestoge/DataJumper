@@ -16,7 +16,7 @@ public class CubeButton : MonoBehaviour
             Debug.Log("Friend cube found!"); // Replace with UI element?
             // voiceline or beep noise
             Destroy(item); // Destroy original Friend Cube
-            Instantiate(replica, snapper.transform.position, Quaternion.Euler(new Vector3(0, Random.Range(30, -40), 0))); // Create replica (non-interact-able) friend cube above button with a random rotation on Y axis between 30 - 140 degrees.
+            Instantiate(replica, snapper.transform.position, Quaternion.Euler(new Vector3(0, Random.Range(30, 140), 0))); // Create replica (non-interact-able) friend cube above button with a random rotation on Y axis between 30 - 140 degrees.
             hologram.gameObject.GetComponent<Renderer>().material = activeMaterial; // Change hologram-like area of button to the active material (green)
             Destroy(gameObject); // Destroy the trigger detection box collider
         }
