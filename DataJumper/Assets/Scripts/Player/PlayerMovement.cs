@@ -65,7 +65,8 @@ public class PlayerMovement : MonoBehaviour
     // Player commands, stores wish commands that the player asks for (Forward, back, jump, etc)
     private Cmd _cmd;
 
-    // Sliding Particles
+    // Sliding stuff
+    private bool Sliding;
     public ParticleSystem slideSparks1;
     public ParticleSystem slideSparks2;
 
@@ -129,10 +130,8 @@ public class PlayerMovement : MonoBehaviour
             rotX = 90;
         }
 
-        this.transform.rotation = Quaternion.Euler(0, rotY, 0); // Rotates the collider
+        transform.rotation = Quaternion.Euler(0, rotY, 0); // Rotates the collider
         playerView.rotation = Quaternion.Euler(rotX, rotY, 0); // Rotates the camera
-
-
 
         /* Movement, here's the important part */
         QueueJump();
@@ -145,10 +144,13 @@ public class PlayerMovement : MonoBehaviour
             AirMove();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            // slide
-            StartSliding();
+        var ups = _controller.velocity;
+        ups.y = 0;
+        var currentSpeed = Mathf.Round(ups.magnitude * 100) / 100;
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && _controller.isGrounded && currentSpeed >= 7) // if left ctrl pressed, player is grounded and are going more than 7ups
+        {           
+            StartSliding(); // slide
             Invoke("StopSliding", 2.0f);
         }
 
@@ -334,7 +336,7 @@ public class PlayerMovement : MonoBehaviour
         // Reset the gravity velocity
         playerVelocity.y = -gravity * Time.deltaTime;
 
-        if (wishJump)
+        if (wishJump && !Sliding)
         {
             playerVelocity.y = jumpSpeed;
             wishJump = false;
@@ -350,20 +352,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void StartSliding()
     {
+        Sliding = true;
         moveSpeed *= 2;
         _controller.height /= 2;
         _controller.center = new Vector3(_controller.center.x, _controller.center.y / 2, _controller.center.z);
         FindObjectOfType<AudioManager>().Play("Slide");
-
-        if (_controller.isGrounded)
-        {
-            slideSparks1.Play();
-            slideSparks2.Play();
-        }
+        slideSparks1.Play();
+        slideSparks2.Play();
     }
 
     private void StopSliding()
     {
+        Sliding = false;
         moveSpeed /= 2;
         _controller.height *= 2;
         _controller.center = new Vector3(_controller.center.x, _controller.center.y * 2, _controller.center.z);
