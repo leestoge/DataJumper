@@ -7,7 +7,7 @@ public class ToggleTrail : MonoBehaviour
     private bool toggle;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         theTrail = trailHolder.GetComponent<TrailRenderer>();
     }

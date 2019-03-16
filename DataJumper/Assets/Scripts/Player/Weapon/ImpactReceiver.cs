@@ -6,7 +6,7 @@ public class ImpactReceiver : MonoBehaviour
     Vector3 impact = Vector3.zero;
     CharacterController character;
 
-    void Start()
+    void Awake()
     {
         character = GetComponent<CharacterController>();
     }

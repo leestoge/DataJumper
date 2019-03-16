@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem slideSparks1;
     public ParticleSystem slideSparks2;
 
-    private void Start()
+    private void Awake()
     {
         // Hide the cursor
         Cursor.visible = false;

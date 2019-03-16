@@ -8,7 +8,7 @@ public class WallJumping : MonoBehaviour
     private float speedGain = 10f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _controller = GetComponent<CharacterController>();
         movementRef = GetComponent<PlayerMovement>();

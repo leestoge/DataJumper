@@ -14,7 +14,7 @@ public class OutOfBounds : MonoBehaviour
     public float respawnLength;
     private ToggleTrail trailToggler;
 
-    void Start()
+    void Awake()
     {
         movementRef = player.GetComponent<PlayerMovement>();
         trailToggler = player.GetComponent<ToggleTrail>();

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.Effects
@@ -10,7 +9,7 @@ namespace UnityStandardAssets.Effects
         public float multiplier = 1;
 
 
-        private void Start()
+        private void Awake()
         {
             var systems = GetComponentsInChildren<ParticleSystem>();
             foreach (ParticleSystem system in systems)
