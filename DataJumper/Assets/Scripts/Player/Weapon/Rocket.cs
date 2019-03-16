@@ -24,7 +24,7 @@ public class Rocket : MonoBehaviour
 
         GameObject explosion = Instantiate(explosionPrefab, MyTransform.position, MyTransform.rotation);
         GetComponent<AudioSource>().Play();
-        Destroy(explosion, 1f);
+        Destroy(explosion, 3f);
         Destroy(gameObject, 1f);
     }
 
