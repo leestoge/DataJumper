@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         // Put the camera inside the capsule collider
         if (playerView != null)
         {
-            playerView.position = new Vector3(transform.position.x, transform.position.y + playerViewYOffset,
+            playerView.position.Set(transform.position.x, transform.position.y + playerViewYOffset,
                 transform.position.z);
         }
 
@@ -355,7 +355,7 @@ public class PlayerMovement : MonoBehaviour
         Sliding = true;
         moveSpeed *= 2;
         _controller.height /= 2;
-        _controller.center = new Vector3(_controller.center.x, _controller.center.y / 2, _controller.center.z);
+        _controller.center.Set(_controller.center.x, _controller.center.y / 2, _controller.center.z);
         FindObjectOfType<AudioManager>().Play("Slide");
         slideSparks1.Play();
         slideSparks2.Play();
@@ -366,7 +366,7 @@ public class PlayerMovement : MonoBehaviour
         Sliding = false;
         moveSpeed /= 2;
         _controller.height *= 2;
-        _controller.center = new Vector3(_controller.center.x, _controller.center.y * 2, _controller.center.z);
+        _controller.center.Set(_controller.center.x, _controller.center.y * 2, _controller.center.z);
         if (slideSparks1.isPlaying)
         {
             slideSparks1.Stop();
