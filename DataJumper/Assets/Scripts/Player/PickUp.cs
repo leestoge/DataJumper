@@ -14,6 +14,8 @@ public class PickUp : MonoBehaviour
     private bool lookingAtObject;
     public GameObject Outline;
 
+    private bool audioPlayed;
+
     void Update()
     {
         if (lookingAtObject)
@@ -35,13 +37,14 @@ public class PickUp : MonoBehaviour
 
         // check if holding
         if (isHolding)
-        {
+        {           
             item.GetComponent<Rigidbody>().velocity = Vector3.zero;
             item.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             item.transform.SetParent(tempParent.transform);
 
             if (!toggle)
             {
+                audioPlayed = false;
                 item.GetComponent<Rigidbody>().AddForce(tempParent.transform.forward * throwForce);
                 isHolding = false;
             }
@@ -61,19 +64,21 @@ public class PickUp : MonoBehaviour
         {
             // outline/glow
             lookingAtObject = true;
-            // e to pick up
+            // e to pick up, e again to throw
             if (Input.GetKeyDown(KeyCode.E))
             {
+                PlayAudio();
                 toggle = !toggle;
             }
         }
 
         if (toggle) // picked up
         {
+            audioPlayed = true;
             lookingAtObject = false;
             isHolding = true;
             item.GetComponent<Rigidbody>().useGravity = false;
-            item.GetComponent<Rigidbody>().detectCollisions = true;
+            item.GetComponent<Rigidbody>().detectCollisions = true;         
         }
     }
 
@@ -83,5 +88,13 @@ public class PickUp : MonoBehaviour
         isHolding = false;
         Outline.SetActive(false);
         toggle = false;
+    }
+
+    private void PlayAudio()
+    {
+        if (!audioPlayed)
+        {
+            FindObjectOfType<CubeTalk>().PlayPickUpAudio();
+        }
     }
 }

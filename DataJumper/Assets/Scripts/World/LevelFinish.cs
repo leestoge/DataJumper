@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PayloadDelivery : MonoBehaviour
+public class LevelFinish : MonoBehaviour
 {
     public ParticleSystem winnerParticle;
     public TimeManager timeManager;
@@ -11,8 +11,8 @@ public class PayloadDelivery : MonoBehaviour
     private IEnumerator WaitForSceneLoad()
     {
         yield return _delay;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        FindObjectOfType<AudioManager>().SwitchMusic("Level" + SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //FindObjectOfType<AudioManager>().SwitchMusic("Level" + SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void OnTriggerEnter(Collider other)

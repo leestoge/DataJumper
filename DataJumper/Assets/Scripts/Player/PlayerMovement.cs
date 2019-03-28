@@ -5,7 +5,6 @@ struct Cmd
 {
     public float forwardMove;
     public float rightMove;
-    public float upMove;
 }
 
 public class PlayerMovement : MonoBehaviour
@@ -13,10 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform playerView; // Camera
     public float playerViewYOffset = 1.9f; // The height at which the camera is bound to
     public float xMouseSensitivity = 30.0f;
-
     public float yMouseSensitivity = 30.0f;
 
-    //
     /*Frame occuring factors*/
     public float gravity = 20.0f;
 

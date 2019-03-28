@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8139930025529106491}
   - component: {fileID: 8139930025529106493}
-  - component: {fileID: 8139930025529106490}
+  - component: {fileID: 7243618597898675144}
   m_Layer: 0
   m_Name: PayloadDeliveryTriggerBox
   m_TagString: Untagged
@@ -122,7 +122,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8139930025529106490
+--- !u!114 &7243618597898675144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
