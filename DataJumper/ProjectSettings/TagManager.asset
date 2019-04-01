@@ -8,6 +8,7 @@ TagManager:
   - FriendCube
   - AudioManager
   - Ground
+  - PropWeapon
   layers:
   - Default
   - TransparentFX

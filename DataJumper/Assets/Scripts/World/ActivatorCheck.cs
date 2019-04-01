@@ -28,8 +28,8 @@ public class ActivatorCheck : MonoBehaviour
         if (other.CompareTag("FriendCube") && PickUpHook.isHolding && item != null) // check if FriendCube, the player is holding it, and the FriendCube isn't somehow null.
         {            
             Debug.Log("Friend cube found!"); // Replace with UI element?
-            // do something
             LevelExit.SetActive(true);
+
             if (movingPlatform != null)
             {
                 Debug.Log("Moving Platform found");

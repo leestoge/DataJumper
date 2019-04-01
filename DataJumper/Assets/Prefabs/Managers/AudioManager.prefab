@@ -92,9 +92,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: wallJump
-    clip: {fileID: 8300000, guid: 1e0f8bb9edf1a634e8cf61094ec472fa, type: 3}
-    volume: 0.5
+  - name: PickUp
+    clip: {fileID: 8300000, guid: 20d11720d8f3c224a944c9c600ecab05, type: 3}
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -106,6 +106,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Checkpoint
     clip: {fileID: 8300000, guid: 13d10ab2457232f4bab6058f69842001, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Throw
+    clip: {fileID: 8300000, guid: 92dc6d9abdd0bdf40aaba812f9796470, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
