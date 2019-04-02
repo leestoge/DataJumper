@@ -2,7 +2,7 @@
 
 public class PickUp : MonoBehaviour
 {
-    private float throwForce = 600f;
+    public float throwForce;
     private Vector3 objectPos;
     private float distance;
 
