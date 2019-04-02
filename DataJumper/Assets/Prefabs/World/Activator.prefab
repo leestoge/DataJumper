@@ -1011,6 +1011,7 @@ GameObject:
   - component: {fileID: 4835620297199214544}
   - component: {fileID: 3044346456568140958}
   - component: {fileID: 2688660406134253620}
+  - component: {fileID: 1602725467}
   m_Layer: 0
   m_Name: FriendCubeCheckTrigger
   m_TagString: Untagged
@@ -1053,6 +1054,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1602725467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392344292293858959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a27d0fdeae175e4cb254f7f7b6ebd7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapper: {fileID: 2513585086539914385}
+  FriendCube: {fileID: 0}
+  replica: {fileID: 3947764466077140690, guid: 651771b2a78dcae459f1861b0d3a2220, type: 3}
+  hologram1: {fileID: 5735980499013904772}
+  hologram2: {fileID: 5735980500419177266}
+  activeMaterial: {fileID: 2100000, guid: e7d4e6f53fea1764e8a2676c78a9168b, type: 2}
+  LevelExit: {fileID: 0}
+  movingPlatform: {fileID: 0}
 --- !u!1 &7228816696217285751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1083,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3447796341394830540}
-  - component: {fileID: 7060965404789831474}
   m_Layer: 0
   m_Name: Activator
   m_TagString: Untagged
@@ -1088,18 +1108,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7060965404789831474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7228816696217285751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a27d0fdeae175e4cb254f7f7b6ebd7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snapper: {fileID: 2513585086539914385}
-  item: {fileID: 0}
-  replica: {fileID: 3947764466077140690, guid: 651771b2a78dcae459f1861b0d3a2220, type: 3}
