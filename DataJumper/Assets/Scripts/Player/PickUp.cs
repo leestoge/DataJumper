@@ -12,27 +12,31 @@ public class PickUp : MonoBehaviour
     private bool toggle;
 
     private bool lookingAtObject;
-    public GameObject Outline;
+    private Outline outline;
 
     private bool audioPlayed;
 
+    void Awake()
+    {
+        outline = gameObject.GetComponent<Outline>();
+    }
     void Update()
     {
+        distance = Vector3.Distance(item.transform.position, tempParent.transform.position);
+
         if (lookingAtObject)
         {
-            Outline.SetActive(true);
+            outline.OutlineWidth = 10;
         }
         else
         {
-            Outline.SetActive(false);
-        }
+            outline.OutlineWidth = 0;
+        }       
 
-        distance = Vector3.Distance(item.transform.position, tempParent.transform.position);
-
-        if (distance >= 3f)
+        if (distance >= 6f)
         {
             isHolding = false;
-            Outline.SetActive(false);
+            lookingAtObject = false;
         }
 
         // check if holding
@@ -60,7 +64,7 @@ public class PickUp : MonoBehaviour
 
     void OnMouseOver()
     {     
-        if (distance <= 3f)
+        if (distance <= 6f)
         {
             // outline/glow
             lookingAtObject = true;
@@ -86,7 +90,6 @@ public class PickUp : MonoBehaviour
     {
         lookingAtObject = false;
         isHolding = false;
-        Outline.SetActive(false);
         toggle = false;
     }
 
