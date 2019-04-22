@@ -70,6 +70,7 @@ MonoBehaviour:
   hologram: {fileID: 5629854446324845159}
   activeMaterial: {fileID: 2100000, guid: e7d4e6f53fea1764e8a2676c78a9168b, type: 2}
   nonactiveMaterial: {fileID: 2100000, guid: 62009d2a7b8727c4a8bb333140a5dd67, type: 2}
+  shockwave: {fileID: 0}
 --- !u!1 &5629854445573874488
 GameObject:
   m_ObjectHideFlags: 0
