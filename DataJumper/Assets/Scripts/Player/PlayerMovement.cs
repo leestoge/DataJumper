@@ -63,9 +63,12 @@ public class PlayerMovement : MonoBehaviour
     private Cmd _cmd;
 
     // Sliding stuff
-    private bool Sliding;
+    private bool isSliding;
     public ParticleSystem slideSparks1;
     public ParticleSystem slideSparks2;
+
+    // Crouching stuff
+    private bool isCrouching;
 
     private void Awake()
     {
@@ -145,10 +148,19 @@ public class PlayerMovement : MonoBehaviour
         ups.y = 0;
         var currentSpeed = Mathf.Round(ups.magnitude * 100) / 100;
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && _controller.isGrounded && currentSpeed >= 7) // if left ctrl pressed, player is grounded and are going more than 7ups
+        if (Input.GetKeyDown(KeyCode.LeftControl) && _controller.isGrounded && currentSpeed >= 7 && !isSliding) // if left ctrl pressed, player is grounded and are going more than 7ups and not currently sliding
         {           
             StartSliding(); // slide
-            Invoke("StopSliding", 2.0f);
+            Invoke("StopSliding", 2.0f); // stop sliding after 2 seconds
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && _controller.isGrounded && currentSpeed >=0 && currentSpeed < 7 && !isCrouching) // if left ctrl pressed, player is grounded and is going below 7ups and not currently crouching
+        {
+            StartCrouching(); // crouch
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching) // if we release left ctrl and are currently crouching
+        {
+            StopCrouching(); // stop crouching
         }
 
         // Move the controller
@@ -333,7 +345,7 @@ public class PlayerMovement : MonoBehaviour
         // Reset the gravity velocity
         playerVelocity.y = -gravity * Time.deltaTime;
 
-        if (wishJump && !Sliding)
+        if (wishJump && !isSliding)
         {
             playerVelocity.y = jumpSpeed;
             wishJump = false;
@@ -346,12 +358,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void StartCrouching()
+    {
+        isCrouching = true;
+        _controller.height /= 2f;
+        moveSpeed /= 1.5f;
+        _controller.center.Set(_controller.center.x, _controller.center.y / 2, _controller.center.z);
+    }
+
+    private void StopCrouching()
+    {
+        isCrouching = false;
+        _controller.height *= 2f;
+        moveSpeed *= 1.5f;
+        _controller.center.Set(_controller.center.x, _controller.center.y * 2, _controller.center.z);
+    }
 
     private void StartSliding()
     {
-        Sliding = true;
-        moveSpeed *= 2;
-        _controller.height /= 2;
+        isSliding = true;
+        moveSpeed *= 2f;
+        _controller.height /= 2f;
         _controller.center.Set(_controller.center.x, _controller.center.y / 2, _controller.center.z);
         FindObjectOfType<AudioManager>().Play("Slide");
         slideSparks1.Play();
@@ -360,9 +387,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void StopSliding()
     {
-        Sliding = false;
-        moveSpeed /= 2;
-        _controller.height *= 2;
+        isSliding = false;
+        moveSpeed /= 2f;
+        _controller.height *= 2f;
         _controller.center.Set(_controller.center.x, _controller.center.y * 2, _controller.center.z);
         if (slideSparks1.isPlaying)
         {
