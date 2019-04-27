@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Globalization;
+using UnityEngine;
+using UnityEngine.UI;
 
 // Contains the command the user wishes upon the character
 struct Cmd
@@ -50,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     private float rotY;
 
     private Vector3 moveDirectionNorm = Vector3.zero;
+    [HideInInspector]
     public Vector3 playerVelocity = Vector3.zero;
     private float playerTopVelocity;
 
@@ -69,6 +72,15 @@ public class PlayerMovement : MonoBehaviour
 
     // Crouching stuff
     private bool isCrouching;
+
+    // UI stuff
+    [HideInInspector]
+    public float currentSpeed;
+    [HideInInspector]
+    public float maxSpeed;
+
+    public Text HUD_element_speed; // variable to link to the ui element
+    public TextMesh HUD_element_Maxspeed; // variable to link to the ui element
 
     private void Awake()
     {
@@ -93,6 +105,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _controller = GetComponent<CharacterController>();
+
+        if (HUD_element_Maxspeed == null || HUD_element_speed == null)
+        {
+            Debug.Log("Sort out the UI");
+        }
     }
 
     private void Update()
@@ -146,7 +163,8 @@ public class PlayerMovement : MonoBehaviour
 
         var ups = _controller.velocity;
         ups.y = 0;
-        var currentSpeed = Mathf.Round(ups.magnitude * 100) / 100;
+        currentSpeed = Mathf.Round(ups.magnitude * 100) / 100;
+        maxSpeed = Mathf.Round(playerTopVelocity * 100) / 100;
 
         if (Input.GetKeyDown(KeyCode.LeftControl) && _controller.isGrounded && currentSpeed >= 7 && !isSliding) // if left ctrl pressed, player is grounded and are going more than 7ups and not currently sliding
         {           
@@ -180,6 +198,31 @@ public class PlayerMovement : MonoBehaviour
             transform.position.x,
             transform.position.y + playerViewYOffset,
             transform.position.z);
+
+        // UI
+
+        HUD_element_speed.text = currentSpeed.ToString(CultureInfo.CurrentCulture) + "ups";
+        HUD_element_Maxspeed.text = "Top Speed: " + maxSpeed.ToString(CultureInfo.CurrentCulture) + "ups";
+
+        
+
+        if (currentSpeed >= 15)
+        {
+            HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, Color.yellow, Time.deltaTime * 3f);
+        }
+        else
+        {
+            HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, Color.white, Time.deltaTime * 3f);
+        }
+
+        if (currentSpeed >= 25)
+        {
+            HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, Color.green, Time.deltaTime * 3f);
+        }
+        else
+        {
+            HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, Color.white, Time.deltaTime * 3f);
+        }
     }
 
     /*******************************************************************************************************\
@@ -465,15 +508,15 @@ public class PlayerMovement : MonoBehaviour
         playerVelocity.z += accelspeed * wishdir.z;
     }
 
-    private void OnGUI()
-    {
-        style.normal.textColor = Color.green;
-        GUI.Label(new Rect(0, 0, 400, 100), "FPS: " + fps, style);
-        var ups = _controller.velocity;
-        ups.y = 0;
-        GUI.Label(new Rect(0, 15, 400, 100), "Speed: " + Mathf.Round(ups.magnitude * 100) / 100 + "ups", style);
-        GUI.Label(new Rect(0, 30, 400, 100), "Top Speed: " + Mathf.Round(playerTopVelocity * 100) / 100 + "ups", style);
-    }
+    //private void OnGUI()
+    //{
+    //    style.normal.textColor = Color.green;
+    //    GUI.Label(new Rect(0, 0, 400, 100), "FPS: " + fps, style);
+    //    var ups = _controller.velocity;
+    //    ups.y = 0;
+    //    GUI.Label(new Rect(0, 15, 400, 100), "Speed: " + Mathf.Round(ups.magnitude * 100) / 100 + "ups", style);
+    //    GUI.Label(new Rect(0, 30, 400, 100), "Top Speed: " + Mathf.Round(playerTopVelocity * 100) / 100 + "ups", style);
+    //}
 
     void OnTriggerEnter(Collider other)
     {

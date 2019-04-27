@@ -6,26 +6,57 @@ public class LevelFinish : MonoBehaviour
 {
     public ParticleSystem winnerParticle;
     public TimeManager timeManager;
-    private readonly WaitForSeconds _delay = new WaitForSeconds(3f);
+    public GameObject statsCam;
+    public GameObject gameplayUI;
+    private readonly WaitForSeconds _delay = new WaitForSeconds(5f);
 
-    private IEnumerator WaitForSceneLoad()
-    {
-        yield return _delay;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //FindObjectOfType<AudioManager>().SwitchMusic("Level" + SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    // god..
+    public GameObject MinuteDisplay;
+    public GameObject SecondDisplay;
+    public GameObject MillisecondDisplay;
 
     void OnTriggerEnter(Collider other)
     {
-        // start platform particles
-        winnerParticle.Play();
-        // sound?
+        if (other.CompareTag("Player"))
+        {
+            if (TimerManager.Second_Count <= 9)
+            {
+                SecondDisplay.GetComponent<TextMesh>().text = "0" + TimerManager.Second_Count + ".";
+            }
+            else
+            {
+                SecondDisplay.GetComponent<TextMesh>().text = "" + TimerManager.Second_Count + ".";
+            }
 
-        // slow mo?
-        timeManager.InitiateSlowMotion();
-        Debug.Log("<color=cyan>You win!</color>");  // Replace with UI element?
+            if (TimerManager.Minute_Count <= 9)
+            {
+                MinuteDisplay.GetComponent<TextMesh>().text = "0" + TimerManager.Minute_Count + ":";
+            }
+            else
+            {
+                MinuteDisplay.GetComponent<TextMesh>().text = "" + TimerManager.Minute_Count + ":";
+            }
 
-        StartCoroutine(WaitForSceneLoad());
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            MillisecondDisplay.GetComponent<TextMesh>().text = "" + TimerManager.Millisecond_Count.ToString("F0");
+
+            // start platform particles
+            winnerParticle.Play();
+            // sound?       
+            timeManager.InitiateSlowMotion(); // slow mo
+            Debug.Log("<color=cyan>You win!</color>"); // Replace with UI element?
+
+            StartCoroutine(WaitForStats(other));
+        }
+    }
+
+    private IEnumerator WaitForStats(Collider player)
+    {
+        yield return _delay;
+
+        player.gameObject.SetActive(false);
+        gameplayUI.SetActive(false);
+        statsCam.SetActive(true);
+
+        // load next scene
     }
 }
