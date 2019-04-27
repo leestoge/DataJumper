@@ -14,6 +14,8 @@ public class LevelNameCycle : MonoBehaviour
         _animators = new List<Animator>(GetComponentsInChildren<Animator>());
 
         StartCoroutine(DoAnimation());
+
+        Destroy(gameObject, 5f);
     }
 
     IEnumerator DoAnimation()
