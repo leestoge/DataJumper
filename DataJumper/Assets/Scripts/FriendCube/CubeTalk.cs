@@ -10,9 +10,6 @@ public class CubeTalk : MonoBehaviour
     readonly System.Random rnd = new System.Random();
     private int Chance;
 
-    //ground detection
-    private float distToGround = 0.5f;
-
     void Awake()
     {
         _AudioSource = GetComponent<AudioSource>();
@@ -31,7 +28,7 @@ public class CubeTalk : MonoBehaviour
     public void PlayGreetingAudio()
     {
         GreetingClip();
-        if (!_AudioSource.isPlaying && Chance != 1 && isGrounded() == true)
+        if (!_AudioSource.isPlaying && Chance != 1)
         {
             _AudioSource.PlayOneShot(_AudioSource.clip);
         }
@@ -49,11 +46,6 @@ public class CubeTalk : MonoBehaviour
     private void GreetingClip()
     {
         _AudioSource.clip = Greeting[Random.Range(0, Greeting.Length)];
-    }
-
-    private bool isGrounded()
-    {
-        return Physics.Raycast(transform.position, Vector3.down, distToGround);
     }
 
     void OnTriggerEnter(Collider other)

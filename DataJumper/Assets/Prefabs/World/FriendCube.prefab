@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2917787636242574106}
   - component: {fileID: 7485357781822983561}
   - component: {fileID: 7299184442693117552}
+  - component: {fileID: 2520971481493365965}
   m_Layer: 0
   m_Name: FriendCube
   m_TagString: FriendCube
@@ -4917,7 +4918,6 @@ MonoBehaviour:
   item: {fileID: 3812559499354505509}
   tempParent: {fileID: 0}
   isHolding: 0
-  Outline: {fileID: 0}
 --- !u!199 &2917787636242574106
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5035,3 +5035,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &2520971481493365965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812559499354505509}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: 0, y: 2.1, z: 0}
