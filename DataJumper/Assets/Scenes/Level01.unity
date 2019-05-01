@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1010633264}
-  m_IndirectSpecularColor: {r: 0.4906236, g: 0.17582504, b: 0.54047036, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4657,6 +4657,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelCenter
       objectReference: {fileID: 0}
+    - target: {fileID: 2991294535102617614, guid: 181d8e65e551cb84ba4dfd6ce7e6a3d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2991294535183907770, guid: 181d8e65e551cb84ba4dfd6ce7e6a3d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4710,11 +4715,6 @@ PrefabInstance:
     - target: {fileID: 2991294535183907770, guid: 181d8e65e551cb84ba4dfd6ce7e6a3d9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991294535102617614, guid: 181d8e65e551cb84ba4dfd6ce7e6a3d9,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16790,7 +16790,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33310
+  m_Name: pb_Mesh44558
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
