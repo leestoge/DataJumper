@@ -19,7 +19,7 @@ public class WallJumping : MonoBehaviour
         if (!_controller.isGrounded && hit.normal.y < 0.1f)
         {
             if (Input.GetButtonDown("Jump"))
-            {            
+            {
                 Debug.DrawRay(hit.point, hit.normal, Color.magenta, 1.25f);
                 movementRef.playerVelocity = hit.normal * speedGain;
                 movementRef.playerVelocity.y = upwardsThrust;

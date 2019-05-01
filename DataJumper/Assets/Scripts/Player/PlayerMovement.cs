@@ -204,25 +204,10 @@ public class PlayerMovement : MonoBehaviour
         HUD_element_speed.text = currentSpeed.ToString(CultureInfo.CurrentCulture) + "ups";
         HUD_element_Maxspeed.text = "Top Speed: " + maxSpeed.ToString(CultureInfo.CurrentCulture) + "ups";
 
-        
 
-        if (currentSpeed >= 15)
-        {
-            HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, Color.yellow, Time.deltaTime * 3f);
-        }
-        else
-        {
-            HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, Color.white, Time.deltaTime * 3f);
-        }
-
-        if (currentSpeed >= 25)
-        {
-            HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, Color.green, Time.deltaTime * 3f);
-        }
-        else
-        {
-            HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, Color.white, Time.deltaTime * 3f);
-        }
+        HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, currentSpeed >= 15 ? Color.yellow : Color.white, Time.deltaTime * 3f);
+        HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, currentSpeed >= 25 ? Color.green : Color.white, Time.deltaTime * 3f);
+        HUD_element_speed.color = Color.Lerp(HUD_element_speed.color, currentSpeed >= 35 ? Color.cyan : Color.white, Time.deltaTime * 3f);
     }
 
     /*******************************************************************************************************\
@@ -434,6 +419,7 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed /= 2f;
         _controller.height *= 2f;
         _controller.center.Set(_controller.center.x, _controller.center.y * 2, _controller.center.z);
+
         if (slideSparks1.isPlaying)
         {
             slideSparks1.Stop();
