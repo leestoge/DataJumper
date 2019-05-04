@@ -46,7 +46,7 @@ public class LevelFinish : MonoBehaviour
 
             // start platform particles
             winnerParticle.Play();
-            // sound?       
+            FindObjectOfType<AudioManager>().Play("LevelFinish");
             timeManager.InitiateSlowMotion(); // slow mo
             Debug.Log("<color=cyan>You win!</color>"); // Replace with UI element?
 
