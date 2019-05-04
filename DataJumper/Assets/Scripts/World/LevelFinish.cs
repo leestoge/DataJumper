@@ -40,6 +40,10 @@ public class LevelFinish : MonoBehaviour
 
             MillisecondDisplay.GetComponent<TextMesh>().text = "" + TimerManager.Millisecond_Count.ToString("F0");
 
+            TimerManager.Minute_Count = 0;
+            TimerManager.Second_Count = 0;
+            TimerManager.Millisecond_Count = 0;
+
             // start platform particles
             winnerParticle.Play();
             // sound?       

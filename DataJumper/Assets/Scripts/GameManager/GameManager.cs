@@ -6,5 +6,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Application.targetFrameRate = 146;
+        TimerManager.Minute_Count = 0;
+        TimerManager.Second_Count = 0;
+        TimerManager.Millisecond_Count = 0;
     }
 }
