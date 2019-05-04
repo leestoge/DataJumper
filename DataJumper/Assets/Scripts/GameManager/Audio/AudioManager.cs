@@ -31,30 +31,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        SwitchMusic("Level00"); // like an array, 0,1,2 etc
-    }
-
-    public void SwitchMusic(string targetLevel)
-    {
-        if (targetLevel == "Level00")
-        {
-            Play("01Music");
-        }
-        else if (targetLevel == "Level01")
-        {
-            Stop("01Music");
-            Play("02Music");
-        }
-        else if (targetLevel == "Level02")
-        {
-            Stop("01Music");
-            Stop("02Music");
-            Play("03Music");
-        }
-    }
-
     public void Play(string name)
     {
         var s = Array.Find(sounds, sound => sound.name == name);

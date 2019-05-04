@@ -8,7 +8,8 @@ public class LevelFinish : MonoBehaviour
     public TimeManager timeManager;
     public GameObject statsCam;
     public GameObject gameplayUI;
-    private readonly WaitForSeconds _delay = new WaitForSeconds(5f);
+    private readonly WaitForSeconds _delay1 = new WaitForSeconds(5f);
+    private readonly WaitForSeconds _delay2 = new WaitForSeconds(10f);
 
     // god..
     public GameObject MinuteDisplay;
@@ -51,12 +52,13 @@ public class LevelFinish : MonoBehaviour
 
     private IEnumerator WaitForStats(Collider player)
     {
-        yield return _delay;
+        yield return _delay1;
 
         player.gameObject.SetActive(false);
         gameplayUI.SetActive(false);
         statsCam.SetActive(true);
 
-        // load next scene
+        yield return _delay2;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

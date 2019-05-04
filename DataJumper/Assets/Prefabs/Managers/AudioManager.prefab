@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5951341783061557431
+--- !u!1 &3738973414589441832
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5951341783061557428}
-  - component: {fileID: 5951341783061557429}
+  - component: {fileID: 3738973414589441838}
+  - component: {fileID: 3738973414589441833}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: AudioManager
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &5951341783061557428
+--- !u!4 &3738973414589441838
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5951341783061557431}
+  m_GameObject: {fileID: 3738973414589441832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5951341783061557429
+--- !u!114 &3738973414589441833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5951341783061557431}
+  m_GameObject: {fileID: 3738973414589441832}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 376ec958fb62a284b94aaf35303617ff, type: 3}
@@ -45,10 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: 01Music
-    clip: {fileID: 8300000, guid: 885311d234a0b214fa8bc1e16ff85c37, type: 3}
+    clip: {fileID: 8300000, guid: 7f3d9512610ac3947a97baca7cd0365c, type: 3}
     volume: 0.3
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Jump
     clip: {fileID: 8300000, guid: 38b6ab138765e26449a71d853cf352c9, type: 3}
