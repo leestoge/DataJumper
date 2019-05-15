@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 2991294535102617611}
   - component: {fileID: 2991294535102617609}
   - component: {fileID: 6866268840873940051}
+  - component: {fileID: 2872951503795038259}
   m_Layer: 0
   m_Name: Level Pan Camera
   m_TagString: Untagged
@@ -505,9 +506,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 12
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -586,6 +588,14 @@ MonoBehaviour:
   scanlineSize: 512
   scanlineIntensity: 0.4
   _material: {fileID: 0}
+--- !u!81 &2872951503795038259
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991294535102617614}
+  m_Enabled: 1
 --- !u!1 &2991294535183907771
 GameObject:
   m_ObjectHideFlags: 0
