@@ -166,13 +166,13 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = Mathf.Round(ups.magnitude * 100) / 100;
         maxSpeed = Mathf.Round(playerTopVelocity * 100) / 100;
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && _controller.isGrounded && currentSpeed >= 7 && !isSliding) // if left ctrl pressed, player is grounded and are going more than 7ups and not currently sliding
+        if (Input.GetKeyDown(KeyCode.LeftControl) && currentSpeed >= 7 && !isSliding) // if left ctrl pressed, player is grounded and are going more than 7ups and not currently sliding
         {           
             StartSliding(); // slide
             Invoke("StopSliding", 2.0f); // stop sliding after 2 seconds
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && _controller.isGrounded && currentSpeed >=0 && currentSpeed < 7 && !isCrouching) // if left ctrl pressed, player is grounded and is going below 7ups and not currently crouching
+        if (Input.GetKeyDown(KeyCode.LeftControl) && currentSpeed >=0 && currentSpeed < 7 && !isCrouching) // if left ctrl pressed, player is grounded and is going below 7ups and not currently crouching
         {
             StartCrouching(); // crouch
         }
@@ -373,7 +373,7 @@ public class PlayerMovement : MonoBehaviour
         // Reset the gravity velocity
         playerVelocity.y = -gravity * Time.deltaTime;
 
-        if (wishJump && !isSliding)
+        if (wishJump && !isSliding && !isCrouching)
         {
             playerVelocity.y = jumpSpeed;
             wishJump = false;
@@ -409,8 +409,12 @@ public class PlayerMovement : MonoBehaviour
         _controller.height /= 2f;
         _controller.center.Set(_controller.center.x, _controller.center.y / 2, _controller.center.z);
         FindObjectOfType<AudioManager>().Play("Slide");
-        slideSparks1.Play();
-        slideSparks2.Play();
+
+        if (_controller.isGrounded)
+        {
+            slideSparks1.Play();
+            slideSparks2.Play();
+        }
     }
 
     private void StopSliding()
@@ -510,6 +514,24 @@ public class PlayerMovement : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().RandomizePitch("Land");
             FindObjectOfType<AudioManager>().Play("Land");
+
+            if (isSliding)
+            {
+                slideSparks1.Play();
+                slideSparks2.Play();
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            if (isSliding)
+            {
+                slideSparks1.Stop();
+                slideSparks2.Stop();
+            }
         }
     }
 }
